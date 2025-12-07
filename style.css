@@ -1,0 +1,206 @@
+@font-face {
+    font-family: 'FontNev';
+    src: url('font/IBM_Plex_Sans/IBMPlexSans-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FontNev';
+    src: url('font/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:antiquewhite;
+}
+
+h1{
+    text-align: center;
+    font-weight: bold;
+}
+
+/* --- Alap: mobil --- */
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* egymás alatt */
+    align-items: center;    /* középre */
+    width: 100%;
+}
+
+nav ul li {
+    margin: 5px 0;
+}
+
+nav ul li a {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: black;
+    background-color: pink;
+    font-weight: normal;
+}
+
+nav ul li a:hover {
+    color: white;
+    font-weight: bold;
+    background-color: red;
+}
+
+
+main {
+    padding: 2rem 0;
+    text-align: center;
+    background-color: lightyellow;
+}
+
+table{
+    border:1rem; 
+    padding: 5%; 
+    border-collapse: collapse; 
+    width: 70%; 
+    margin: 0 auto; 
+    text-align: center;
+}
+
+td{
+    font-size: 1.2em;
+    padding: 2%;
+    font-weight: bold;
+}
+
+.form-group { margin-bottom: 20px; }
+
+label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
+        
+/* Input stílusok */
+input[type="text"], input[type="email"], input[type="password"], 
+input[type="number"], input[type="date"], select, textarea {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Hogy a padding ne növelje a szélességet */
+    font-size: 16px;
+}
+
+/* Checkbox és Radio stílusok */
+.radio-group label, .checkbox-group label { display: inline; font-weight: normal; margin-right: 15px; }
+input[type="radio"], input[type="checkbox"] { transform: scale(1.2); margin-right: 5px; }
+
+        
+
+#gombos{
+    margin-top: 1.5%;
+}
+
+input, select, textarea {
+    width:70%; 
+    padding:1rem; 
+    border:1px solid black;
+    border-radius:1em;
+    font-size:1em; 
+    box-sizing:border-box;
+}
+
+input[type="radio"], input[type="checkbox"] { 
+    width:auto; 
+}
+
+/*hibaüzenet*/
+.error-msg { color: red;  font-size:1em; height:1.2em; }
+
+.input-error {
+     background:#fff2f2; 
+     border-color: red; }
+
+/*gomb*/
+button {
+    width:50%; 
+    padding:1em; 
+    font-size:1.2em; 
+    background:lightblue;
+    border:none;
+    color:white; 
+    cursor:pointer;
+    font-weight:bold; 
+    transition:0.3s;
+}
+button:hover { 
+    background:blue; 
+}
+#scoreBox {
+    margin-top:1rem; 
+    padding:1rem; 
+    background:white; 
+    border-left:1px solid black;
+    font-size:1.2em; 
+    display:none;
+}
+
+
+
+article#szokasok{
+    padding:2%;
+}
+
+ol#lista {
+        list-style-type: decimal;
+        text-align: justify;
+        margin: 2%;
+        padding:2%,
+    }
+
+ol#lista li {
+    margin: 1%;
+}
+
+p{
+    margin:5%;
+}
+
+
+td {
+    display: flex;
+    justify-content: center; /* vízszintes közép */
+}
+
+img {
+    max-width: 100%;   
+    height: auto;      
+    display: block;  
+    margin: 0;   
+    align-items: center;
+    border: 1px solid black;
+}
+
+
+@media (min-width: 769px) {
+    nav ul {
+        flex-direction: row;        
+        justify-content: center;    
+    }
+    nav ul li {
+        margin: 1rem;             
+    }
+    nav ul li a {
+        padding: 1rem;        
+    }
+    button{
+        width:25%;
+    }
+    input{
+        width:25%;
+    }
+}

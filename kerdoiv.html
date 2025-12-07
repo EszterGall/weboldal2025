@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Kvíz</title>
+    <link rel="icon" href="kepek/favicon.jfif" type="image/x-icon">
+    <script src="java.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Kvíz</h1>
+    </header>
+    <nav>
+        <ul id="navigacio">
+            <li><a href="index.html">Főoldal</a></li>
+            <li><a href="hagyomanyok.html">Hagyományok</a></li>
+            <li><a href="etelek.html">Népi ételek</a></li>
+            <li><a href="nepi.html">Kultúra</a></li>
+            <li><a href="kerdoiv.html">Kvíz</a></li>
+        </ul>
+    </nav>
+
+    <main>
+    <div class="container">
+    <h1>Magyar Kultúra Teszt</h1>
+    <p class="info">Töltsd ki a kulturális tesztet! A beküldés után a httpbin.org fogadja az adatokat. A kitöltés megkezdése előtt kérlek add meg az emil címedet és a születési dátumodat.</p>
+
+    <form id="cultureForm" action="https://httpbin.org/post" method="POST">
+        <!--ADATOK ELKÉRÉSE-->
+        <div class="form-group">
+            <label for="email">Mielőtt kitöltöd, kérlek add meg az mail címedet:</label>
+            <input type="email" id="email" name="email" placeholder="pelda@mail.com">
+            <div id="error-email" class="error-msg"></div>
+        </div>
+
+        <div class="form-group" >
+                <label for="birthdate">Kitöltés előtt a születési dátumodat is add meg kérlek:</label>
+                <input type="date" id="birthdate" name="birthdate">
+                <div id="error-date" class="error-msg"></div>
+            </div>
+
+        <!-- 1. SZÖVEGES KÉRDÉS -->
+        <div class="form-group">
+            <label for="hungarianPoet">Nevezz meg egy híres magyar költőt!</label>
+            <input type="text" id="hungarianPoet" name="hungarian_poet">
+            <div id="error-poet" class="error-msg"></div>
+        </div>
+
+        <!-- 2. SZÁM: MELYIK ÉVBEN SZÜLETETT PETŐFI? -->
+        <div class="form-group">
+            <label for="birthPetofi">Melyik évben született Petőfi Sándor?</label>
+            <input type="number" id="birthPetofi" name="petofi_birth" placeholder="Pl. 1823">
+            <div id="error-petofi" class="error-msg"></div>
+        </div>
+
+        <!-- 3. RÁDIÓ: NEMZETI ÉTELEK -->
+        <div class="form-group radio-group">
+            <label>Mi Magyarország egyik híres nemzeti étele?</label>
+
+            <ul id="gombos">
+                <li>
+                    <input type="radio" name="national_food" id="gulyas" value="Gulyás" checked>
+                    <label for="gulyas">Gulyásleves</label>
+                </li>
+                <li>
+                    <input type="radio" name="national_food" id="sushi" value="Sushi">
+                    <label for="sushi">Sushi</label>
+                </li>
+                <li>
+                    <input type="radio" name="national_food" id="tacos" value="Tacos">
+                    <label for="tacos">Tacos</label>
+                </li>
+           </ul>
+        </div>
+
+        <!-- 4. LEGÖRDÜLŐ LISTA -->
+        <div class="form-group">
+            <label for="hungarianCity">Válassz egy híres magyar várost!</label>
+            <select id="hungarianCity" name="city">
+                <option value="">-- Válassz várost --</option>
+                <option value="Bukarest">Bukarest</option>
+                <option value="Belgrad">Belgrád</option>
+                <option value="Debrecen">Debrecen</option>
+                <option value="Becs">Bécs</option>
+            </select>
+            <div id="error-city" class="error-msg"></div>
+        </div>
+
+        <!-- 5. CHECKBOX -->
+        <div class="form-group checkbox-group">
+            <label>Mennyire vagy olvasott?</label>
+            <input type="checkbox" id="pushed" name="pushed">
+            <label for="pushed">Olvastam már Arany János művét</label>
+
+            <input type="checkbox" id="pushed2" name="pushed">
+            <label for="pushed2">Olvastam már Petőfi Sándor művét</label>
+        </div>
+
+        <!-- 6. TEXTAREA -->
+        <div class="form-group">
+            <label for="favouriteHungarian">Mi a kedvenc magyar történelmi eseményed és miért?</label>
+            <textarea id="favouriteHungarian" name="fav_event" rows="4"></textarea>
+            <div id="error-event" class="error-msg"></div>
+        </div>
+
+        <!-- 7. SZÖVEGES: HIMNUSZ-->
+         <div class="form-group"></div>
+            <label for="himnuszAuthor">Ki írta a Himnuszt?</label>
+            <input type="text" id="himnuszAuthor" name="himnusz_author">
+        <div id="error-himnusz" class="error-msg"></div>
+
+        <button type="submit">Küldés</button>
+    </form>
+
+    </main>
+    <footer>
+        <p>&copy; 2025 Projekt oldal. Minden jog fenntartva.</p>
+    </footer>
+</body>
+</html>

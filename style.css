@@ -25,20 +25,25 @@
     --bg-subtle: #f4ede2;          /* Finom homokkő / világos sárgásbarna */
     
     /* Tipográfia */
-    --text-main: #38241b;          /* Mély eszpresszó / sötétbarna */
-    --text-muted: #5e483e;         /* Meleg földbarna kísérőszöveg */
+    --text-main: #332014;          /* Mély étcsokoládé barna */
+    --text-muted: #5e4333;         /* Meleg földbarna kísérőszöveg */
     
-    /*Barna & Magyar Paprika hangsúlyszínek */
+    /* Meleg barna & aranyló hangsúlyszínek (bordó helyett) */
     --accent-primary: #783e19;     /* Meleg gesztenyebarna / karamellizált cserép */
     --accent-hover: #5c2e10;       /* Sötétebb, telt pörkölt kávébarna */
-    --accent-gold: #c28834;        /* Aranyló búzakalász / mézsárga kiemelés */
-    --accent-light: #faeee7;       /* Nagyon lágy bordós-krémes lebegő háttér */
+    --accent-gold: #c68a35;        /* Aranyló búzakalász / mézsárga kiemelés */
+    --accent-light: #f7ede2;       /* Nagyon lágy, tejeskávé jellegű háttér */
     
     /* Keretek és lekerekítések */
-    --border: #ebdccb;             /* Lágy terrakotta-homok szegély */
-    --border-hover: #d1bba4;
+    --border: #ebd9c5;             /* Lágy homok-cserép szegély */
+    --border-hover: #d6beaa;
     --radius-sm: 8px;
     --radius-md: 14px;
+    
+    /* Árnyékok és átmenetek */
+    --shadow-soft: 0 6px 20px -3px rgba(61, 33, 16, 0.08);
+    --shadow-hover: 0 12px 28px -4px rgba(61, 33, 16, 0.14);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* Árnyékok és átmenetek */
     --shadow-soft: 0 6px 20px -3px rgba(71, 37, 23, 0.07);

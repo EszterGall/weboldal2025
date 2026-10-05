@@ -28,9 +28,9 @@
     --text-main: #38241b;          /* Mély eszpresszó / sötétbarna */
     --text-muted: #5e483e;         /* Meleg földbarna kísérőszöveg */
     
-    /* Bordó & Magyar Paprika hangsúlyszínek */
-    --accent-primary: #8a1c14;     /* Tradicionális mélybordó / rubinvörös */
-    --accent-hover: #6d130d;       /* Sötétebb nemesbordó */
+    /*Barna & Magyar Paprika hangsúlyszínek */
+    --accent-primary: #783e19;     /* Meleg gesztenyebarna / karamellizált cserép */
+    --accent-hover: #5c2e10;       /* Sötétebb, telt pörkölt kávébarna */
     --accent-gold: #c28834;        /* Aranyló búzakalász / mézsárga kiemelés */
     --accent-light: #faeee7;       /* Nagyon lágy bordós-krémes lebegő háttér */
     

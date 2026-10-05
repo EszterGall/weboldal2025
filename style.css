@@ -16,23 +16,34 @@
 }
 
 /* ==========================================================================
-   2. GLOBÁLIS VÁLTOZÓK ÉS ALAP BEÁLLÍTÁSOK
+   2. HAGYOMÁNYŐRZŐ, MELEG SZÍNPALETTA ÉS VÁLTOZÓK
    ========================================================================== */
 :root {
-    --bg-body: #f8fafc;
-    --bg-card: #ffffff;
-    --bg-subtle: #f1f5f9;
-    --text-main: #0f172a;
-    --text-muted: #475569;
-    --accent: #0284c7;
-    --accent-hover: #0369a1;
-    --accent-light: #e0f2fe;
-    --border: #e2e8f0;
+    /* Meleg, organikus háttér és kártyaszínek */
+    --bg-body: #fbf8f3;            /* Meleg pergamen / világos krém */
+    --bg-card: #ffffff;            /* Tiszta felület */
+    --bg-subtle: #f4ede2;          /* Finom homokkő / világos sárgásbarna */
+    
+    /* Tipográfia */
+    --text-main: #38241b;          /* Mély eszpresszó / sötétbarna */
+    --text-muted: #5e483e;         /* Meleg földbarna kísérőszöveg */
+    
+    /* Bordó & Magyar Paprika hangsúlyszínek */
+    --accent-primary: #8a1c14;     /* Tradicionális mélybordó / rubinvörös */
+    --accent-hover: #6d130d;       /* Sötétebb nemesbordó */
+    --accent-gold: #c28834;        /* Aranyló búzakalász / mézsárga kiemelés */
+    --accent-light: #faeee7;       /* Nagyon lágy bordós-krémes lebegő háttér */
+    
+    /* Keretek és lekerekítések */
+    --border: #ebdccb;             /* Lágy terrakotta-homok szegély */
+    --border-hover: #d1bba4;
     --radius-sm: 8px;
     --radius-md: 14px;
-    --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
-    --shadow-hover: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
-    --transition: all 0.25s ease-in-out;
+    
+    /* Árnyékok és átmenetek */
+    --shadow-soft: 0 6px 20px -3px rgba(71, 37, 23, 0.07);
+    --shadow-hover: 0 12px 28px -4px rgba(71, 37, 23, 0.13);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -45,29 +56,32 @@ body {
     font-family: 'IBMPlexSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-body);
     color: var(--text-muted);
-    line-height: 1.7;
+    line-height: 1.75;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* ==========================================================================
    3. FEJLÉC ÉS TIPOGRÁFIA
    ========================================================================== */
 header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: #ffffff;
+    background: linear-gradient(145deg, #42100d 0%, #681611 60%, #8a1c14 100%);
+    color: #fff9f5;
     text-align: center;
-    padding: 3rem 1.5rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 3.5rem 1.5rem;
+    box-shadow: 0 4px 20px rgba(58, 14, 11, 0.25);
+    border-bottom: 3px solid var(--accent-gold);
 }
 
 header h1 {
     font-family: 'RobotoSlab', serif;
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #ffffff;
+    letter-spacing: -0.01em;
+    color: #fffaf5;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 h2, h3 {
@@ -77,10 +91,10 @@ h2, h3 {
 }
 
 h2 {
-    font-size: 1.5rem;
-    margin: 2rem 0 1rem;
+    font-size: 1.55rem;
+    margin: 2.2rem 0 1rem;
     position: relative;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.6rem;
 }
 
 h2::after {
@@ -88,9 +102,9 @@ h2::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 40px;
+    width: 48px;
     height: 3px;
-    background-color: var(--accent);
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-gold));
     border-radius: 2px;
 }
 
@@ -101,17 +115,17 @@ p {
 }
 
 /* ==========================================================================
-   4. NAVIGÁCIÓ (STICKY FEJLÉC)
+   4. NAVIGÁCIÓ (STICKY FEJLÉC ÉS INTERAKCIÓK)
    ========================================================================== */
 nav {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
     z-index: 100;
-    padding: 0.5rem 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    padding: 0.6rem 1rem;
+    box-shadow: 0 2px 10px rgba(71, 37, 23, 0.05);
 }
 
 nav ul {
@@ -143,7 +157,8 @@ nav ul li a {
 
 nav ul li a:hover {
     background-color: var(--accent-light);
-    color: var(--accent);
+    color: var(--accent-primary);
+    transform: translateY(-1px);
 }
 
 /* ==========================================================================
@@ -153,7 +168,7 @@ main {
     flex: 1;
     max-width: 880px;
     width: 92%;
-    margin: 2.5rem auto;
+    margin: 2.8rem auto;
     padding: 2.5rem;
     background-color: var(--bg-card);
     border-radius: var(--radius-md);
@@ -171,19 +186,19 @@ ol#lista {
 }
 
 ol#lista li {
-    margin-bottom: 0.75rem;
-    padding-left: 0.25rem;
+    margin-bottom: 0.85rem;
+    padding-left: 0.35rem;
     color: var(--text-main);
 }
 
 /* ==========================================================================
-   6. TÁBLÁZATOK (MODERN KÁRTYA ELRENDEZÉSSEL)
+   6. TÁBLÁZATOK (KÁRTYA STÍLUS ÉS TÁLALÁS)
    ========================================================================== */
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    margin: 2rem 0;
+    margin: 2.2rem 0;
     background-color: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
@@ -194,6 +209,7 @@ table {
 
 table:hover {
     box-shadow: var(--shadow-hover);
+    border-color: var(--border-hover);
 }
 
 td {
@@ -204,7 +220,7 @@ td {
 }
 
 td:first-child {
-    background-color: #fafbfc;
+    background-color: #faf5ed;
     border-bottom: 1px solid var(--border);
 }
 
@@ -220,14 +236,21 @@ img {
     max-height: 420px;
     object-fit: cover;
     border-radius: var(--radius-sm);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 15px rgba(56, 36, 27, 0.12);
+    border: 1px solid var(--border);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+img:hover {
+    transform: scale(1.01);
+    box-shadow: 0 8px 24px rgba(56, 36, 27, 0.16);
 }
 
 /* ==========================================================================
    7. KVÍZ ÉS ŰRLAPOK (KERDOIV.HTML)
    ========================================================================== */
 .form-group {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1.85rem;
     text-align: left;
 }
 
@@ -248,7 +271,7 @@ select,
 textarea {
     width: 100%;
     max-width: 480px;
-    padding: 0.75rem 1rem;
+    padding: 0.8rem 1rem;
     border: 1.5px solid var(--border);
     border-radius: var(--radius-sm);
     font-family: inherit;
@@ -262,8 +285,8 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(138, 28, 20, 0.12);
 }
 
 /* Radio & Checkbox */
@@ -279,7 +302,7 @@ textarea:focus {
 .checkbox-group label {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.45rem;
     font-weight: 400;
     color: var(--text-muted);
     cursor: pointer;
@@ -287,7 +310,7 @@ textarea:focus {
 
 input[type="radio"],
 input[type="checkbox"] {
-    accent-color: var(--accent);
+    accent-color: var(--accent-primary);
     width: 1.15rem;
     height: 1.15rem;
     cursor: pointer;
@@ -295,18 +318,21 @@ input[type="checkbox"] {
 
 /* Hibakezelés */
 .error-msg {
-    color: #dc2626;
+    color: var(--accent-primary);
     font-size: 0.85rem;
-    margin-top: 0.35rem;
+    margin-top: 0.4rem;
     min-height: 1.2em;
+    font-weight: 500;
 }
 
 .input-error {
-    background-color: #fef2f2 !important;
-    border-color: #dc2626 !important;
+    background-color: #fff5f5 !important;
+    border-color: var(--accent-primary) !important;
 }
 
-/* Gomb */
+/* ==========================================================================
+   ANIMÁLT GOMB (LEBEGÉS + KATTINTÁSI LENYOMÓDÁS)
+   ========================================================================== */
 #gombos {
     margin-top: 2rem;
 }
@@ -314,37 +340,45 @@ input[type="checkbox"] {
 button {
     width: 100%;
     max-width: 280px;
-    padding: 0.85rem 1.5rem;
+    padding: 0.9rem 1.75rem;
     font-size: 1rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
     color: #ffffff;
-    background-color: var(--accent);
+    background: linear-gradient(135deg, #8a1c14 0%, #a82319 100%);
     border: none;
     border-radius: var(--radius-sm);
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
-    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(138, 28, 20, 0.28);
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    user-select: none;
 }
 
+/* Lebegő animáció */
 button:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-1px);
+    background: linear-gradient(135deg, #991f16 0%, #b8271c 100%);
+    box-shadow: 0 7px 20px rgba(138, 28, 20, 0.38);
+    transform: translateY(-2px);
 }
 
+/* Kattintási ruganyos animáció */
 button:active {
-    transform: translateY(0);
+    transform: translateY(2px) scale(0.98);
+    box-shadow: 0 2px 6px rgba(138, 28, 20, 0.2);
 }
 
-/* Eredményjelző */
+/* Eredményjelző kártya */
 #scoreBox {
     margin-top: 2rem;
-    padding: 1.25rem;
-    background-color: #f0fdf4;
-    border-left: 4px solid #16a34a;
+    padding: 1.25rem 1.5rem;
+    background-color: #faf5ed;
+    border-left: 4px solid var(--accent-gold);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #15803d;
+    color: var(--text-main);
+    box-shadow: var(--shadow-soft);
     display: none;
 }
 
@@ -353,11 +387,12 @@ button:active {
    ========================================================================== */
 footer {
     text-align: center;
-    padding: 2rem 1rem;
-    color: #64748b;
+    padding: 2.2rem 1rem;
+    color: var(--text-muted);
     font-size: 0.9rem;
     border-top: 1px solid var(--border);
-    background-color: #ffffff;
+    background-color: var(--bg-subtle);
+    margin-top: auto;
 }
 
 /* ==========================================================================
@@ -365,7 +400,7 @@ footer {
    ========================================================================== */
 @media (min-width: 769px) {
     header h1 {
-        font-size: 2.3rem;
+        font-size: 2.4rem;
     }
 
     nav ul {
@@ -379,11 +414,11 @@ footer {
     }
 
     nav ul li a {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 1.15rem;
     }
 
     button {
         width: auto;
-        min-width: 180px;
+        min-width: 190px;
     }
 }

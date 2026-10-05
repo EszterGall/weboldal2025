@@ -1,18 +1,4 @@
-@font-face {
-    font-family: 'FontNev';
-    src: url('font/IBM_Plex_Sans/IBMPlexSans-VariableFont_wdth,wght.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'FontNev';
-    src: url('font/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-
+/* --- ALAP BEÁLLÍTÁSOK ÉS SZÍNEK --- */
 * {
     margin: 0;
     padding: 0;
@@ -20,187 +6,231 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color:antiquewhite;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    line-height: 1.6;
+    padding-bottom: 2rem;
 }
 
-h1{
+/* --- FEJLÉC ÉS CÍMEK --- */
+h1 {
     text-align: center;
-    font-weight: bold;
+    padding: 2rem 1rem;
+    color: #0f172a;
+    font-size: 1.8rem;
 }
 
-/* --- Alap: mobil --- */
+h2 {
+    color: #1e293b;
+    margin: 1.5rem 0 1rem;
+    font-size: 1.3rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* --- MENÜ (MOBILON ÉS ASZTALIN IS LETISZTULT) --- */
+nav {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.5rem;
+}
+
 nav ul {
     list-style: none;
     display: flex;
-    flex-direction: column; /* egymás alatt */
-    align-items: center;    /* középre */
-    width: 100%;
-}
-
-nav ul li {
-    margin: 5px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 nav ul li a {
     display: block;
-    text-align: center;
-    padding: 1rem;
     text-decoration: none;
-    color: black;
-    background-color: pink;
-    font-weight: normal;
+    color: #475569;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
 }
 
 nav ul li a:hover {
-    color: white;
-    font-weight: bold;
-    background-color: red;
+    background-color: #0284c7;
+    color: #ffffff;
 }
 
-
+/* --- FŐ TARTALOM ÉS BLOKKOK --- */
 main {
-    padding: 2rem 0;
-    text-align: center;
-    background-color: lightyellow;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
 }
 
-table{
-    border:1rem; 
-    padding: 5%; 
-    border-collapse: collapse; 
-    width: 70%; 
-    margin: 0 auto; 
-    text-align: center;
-}
-
-td{
-    font-size: 1.2em;
-    padding: 2%;
-    font-weight: bold;
-}
-
-.form-group { margin-bottom: 20px; }
-
-label { display: block; margin-bottom: 8px; font-weight: bold; color: #555; }
-        
-/* Input stílusok */
-input[type="text"], input[type="email"], input[type="password"], 
-input[type="number"], input[type="date"], select, textarea {
-    width: 50%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Hogy a padding ne növelje a szélességet */
-    font-size: 16px;
-}
-
-/* Checkbox és Radio stílusok */
-.radio-group label, .checkbox-group label { display: inline; font-weight: normal; margin-right: 15px; }
-input[type="radio"], input[type="checkbox"] { transform: scale(1.2); margin-right: 5px; }
-
-        
-
-#gombos{
-    margin-top: 1.5%;
-}
-
-input, select, textarea {
-    width:70%; 
-    padding:1rem; 
-    border:1px solid black;
-    border-radius:1em;
-    font-size:1em; 
-    box-sizing:border-box;
-}
-
-input[type="radio"], input[type="checkbox"] { 
-    width:auto; 
-}
-
-/*hibaüzenet*/
-.error-msg { color: red;  font-size:1em; height:1.2em; }
-
-.input-error {
-     background:#fff2f2; 
-     border-color: red; }
-
-/*gomb*/
-button {
-    width:50%; 
-    padding:1em; 
-    font-size:1.2em; 
-    background:lightblue;
-    border:none;
-    color:white; 
-    cursor:pointer;
-    font-weight:bold; 
-    transition:0.3s;
-}
-button:hover { 
-    background:blue; 
-}
-#scoreBox {
-    margin-top:1rem; 
-    padding:1rem; 
-    background:white; 
-    border-left:1px solid black;
-    font-size:1.2em; 
-    display:none;
-}
-
-
-
-article#szokasok{
-    padding:2%;
+article#szokasok {
+    padding: 1rem 0;
 }
 
 ol#lista {
-        list-style-type: decimal;
-        text-align: justify;
-        margin: 2%;
-        padding:2%,
-    }
+    list-style-position: inside;
+    margin: 1rem 0;
+}
 
 ol#lista li {
-    margin: 1%;
+    margin-bottom: 0.5rem;
 }
 
-p{
-    margin:5%;
+/* --- TÁBLÁZAT KÁRTYAKÉNT --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background-color: #f1f5f9;
+    border-radius: 8px;
+    overflow: hidden;
 }
-
 
 td {
-    display: flex;
-    justify-content: center; /* vízszintes közép */
+    display: block;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
 }
 
 img {
-    max-width: 100%;   
-    height: auto;      
-    display: block;  
-    margin: 0;   
-    align-items: center;
-    border: 1px solid black;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
 }
 
+/* --- ŰRLAPOK (FORM) --- */
+.form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
 
-@media (min-width: 769px) {
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0284c7;
+}
+
+/* Rádiógombok és jelölőnégyzetek */
+.radio-group, 
+.checkbox-group {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+}
+
+.radio-group label, 
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+input[type="radio"], 
+input[type="checkbox"] {
+    width: auto;
+    cursor: pointer;
+}
+
+/* Hibajelzések és értesítők */
+.error-msg {
+    color: #dc2626;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    min-height: 1.2em;
+}
+
+.input-error {
+    background-color: #fef2f2;
+    border-color: #dc2626;
+}
+
+#scoreBox {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #f0fdf4;
+    border-left: 4px solid #16a34a;
+    font-weight: bold;
+    display: none;
+}
+
+/* Gombok */
+#gombos {
+    margin-top: 1.5rem;
+}
+
+button {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #0284c7;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: #0369a1;
+}
+
+/* --- ASZTALI NÉZET (SZÁMÍTÓGÉP) --- */
+@media (min-width: 768px) {
     nav ul {
-        flex-direction: row;        
-        justify-content: center;    
+        flex-direction: row;
+        justify-content: center;
     }
-    nav ul li {
-        margin: 1rem;             
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+        max-width: 400px;
     }
-    nav ul li a {
-        padding: 1rem;        
-    }
-    button{
-        width:25%;
-    }
-    input{
-        width:25%;
+
+    button {
+        width: auto;
+        min-width: 200px;
     }
 }

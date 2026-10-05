@@ -1,22 +1,38 @@
-/* --- VÁLTOZÓK ÉS ALAPBEÁLLÍTÁSOK --- */
+/* ==========================================================================
+   1. BETŰTÍPUSOK BEKÖTÉSE (HELYI FÁJLOK)
+   ========================================================================== */
+@font-face {
+    font-family: 'IBMPlexSans';
+    src: url('font/IBM_Plex_Sans/IBMPlexSans-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'RobotoSlab';
+    src: url('font/Roboto_Slab/RobotoSlab-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+/* ==========================================================================
+   2. GLOBÁLIS VÁLTOZÓK ÉS ALAP BEÁLLÍTÁSOK
+   ========================================================================== */
 :root {
-    --bg-page: #f8fafc;
-    --bg-surface: #ffffff;
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
     --bg-subtle: #f1f5f9;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
+    --text-main: #0f172a;
+    --text-muted: #475569;
     --accent: #0284c7;
     --accent-hover: #0369a1;
-    --accent-focus: rgba(2, 132, 199, 0.15);
+    --accent-light: #e0f2fe;
     --border: #e2e8f0;
-    --border-hover: #cbd5e1;
     --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
-    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-md: 14px;
+    --shadow-soft: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    --shadow-hover: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+    --transition: all 0.25s ease-in-out;
 }
 
 * {
@@ -26,47 +42,76 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background-color: var(--bg-page);
-    color: var(--text-secondary);
+    font-family: 'IBMPlexSans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-muted);
     line-height: 1.7;
-    padding-bottom: 3rem;
-    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* --- TIPOGRÁFIA ÉS FEJLÉC --- */
-h1 {
+/* ==========================================================================
+   3. FEJLÉC ÉS TIPOGRÁFIA
+   ========================================================================== */
+header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
     text-align: center;
-    padding: 3rem 1.5rem 2rem;
-    color: var(--text-primary);
-    font-size: 2rem;
+    padding: 3rem 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+header h1 {
+    font-family: 'RobotoSlab', serif;
+    font-size: 2.1rem;
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+}
+
+h2, h3 {
+    font-family: 'RobotoSlab', serif;
+    color: var(--text-main);
+    font-weight: 700;
 }
 
 h2 {
-    color: var(--text-primary);
+    font-size: 1.5rem;
     margin: 2rem 0 1rem;
-    font-size: 1.35rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
 }
 
 p {
     margin-bottom: 1.25rem;
     text-align: justify;
-    font-size: 1rem;
+    font-size: 1.025rem;
 }
 
-/* --- NAVIGÁCIÓ (FLOATING PILL DESIGN) --- */
+/* ==========================================================================
+   4. NAVIGÁCIÓ (STICKY FEJLÉC)
+   ========================================================================== */
 nav {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
-    z-index: 50;
-    padding: 0.65rem 1rem;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
 }
 
 nav ul {
@@ -75,40 +120,45 @@ nav ul {
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 nav ul li {
     width: 100%;
     max-width: 320px;
-    text-align: center;
 }
 
 nav ul li a {
     display: block;
+    text-align: center;
+    padding: 0.65rem 1.25rem;
     text-decoration: none;
-    color: var(--text-secondary);
-    padding: 0.6rem 1.25rem;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
+    color: var(--text-muted);
+    font-weight: 600;
     font-size: 0.95rem;
-    transition: all var(--transition);
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
 }
 
 nav ul li a:hover {
-    background-color: var(--bg-subtle);
+    background-color: var(--accent-light);
     color: var(--accent);
 }
 
-/* --- FŐ KONTÉNER --- */
+/* ==========================================================================
+   5. FŐ TARTALOM ÉS CIKKEK
+   ========================================================================== */
 main {
-    max-width: 860px;
+    flex: 1;
+    max-width: 880px;
     width: 92%;
     margin: 2.5rem auto;
     padding: 2.5rem;
-    background-color: var(--bg-surface);
+    background-color: var(--bg-card);
+    border-radius: var(--radius-md);
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-soft);
 }
 
 article#szokasok {
@@ -121,62 +171,72 @@ ol#lista {
 }
 
 ol#lista li {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.75rem;
     padding-left: 0.25rem;
+    color: var(--text-main);
 }
 
-/* --- KÁRTYASZERŰ TÁBLÁZAT ÉS MÉDIA --- */
+/* ==========================================================================
+   6. TÁBLÁZATOK (MODERN KÁRTYA ELRENDEZÉSSEL)
+   ========================================================================== */
 table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     margin: 2rem 0;
-    background-color: var(--bg-surface);
+    background-color: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
     overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+table:hover {
+    box-shadow: var(--shadow-hover);
 }
 
 td {
     display: block;
-    padding: 1.5rem;
-    text-align: left;
+    padding: 1.75rem;
     font-size: 1rem;
-    color: var(--text-secondary);
+    font-weight: 400;
 }
 
 td:first-child {
+    background-color: #fafbfc;
     border-bottom: 1px solid var(--border);
-    background-color: #fafbfd;
+}
+
+td:last-child {
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-card);
 }
 
 img {
     max-width: 100%;
     height: auto;
+    max-height: 420px;
+    object-fit: cover;
     border-radius: var(--radius-sm);
-    display: block;
-    margin: 0 auto;
-    border: 1px solid var(--border);
-    transition: transform var(--transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-img:hover {
-    transform: scale(1.005);
-}
-
-/* --- ŰRLAPOK (MODERN & TISZTA FORM ELEMEK) --- */
+/* ==========================================================================
+   7. KVÍZ ÉS ŰRLAPOK (KERDOIV.HTML)
+   ========================================================================== */
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
     text-align: left;
 }
 
 label {
     display: block;
     margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
-    color: var(--text-primary);
+    color: var(--text-main);
 }
 
 input[type="text"],
@@ -187,83 +247,74 @@ input[type="date"],
 select,
 textarea {
     width: 100%;
+    max-width: 480px;
     padding: 0.75rem 1rem;
     border: 1.5px solid var(--border);
     border-radius: var(--radius-sm);
-    font-size: 0.975rem;
     font-family: inherit;
-    color: var(--text-primary);
-    background-color: var(--bg-surface);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background-color: #ffffff;
     outline: none;
-    transition: border-color var(--transition), box-shadow var(--transition);
+    transition: var(--transition);
 }
 
 input:focus,
 select:focus,
 textarea:focus {
     border-color: var(--accent);
-    box-shadow: 0 0 0 4px var(--accent-focus);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
 
-/* Checkbox és rádió mezők */
+/* Radio & Checkbox */
 .radio-group,
 .checkbox-group {
     display: flex;
     flex-wrap: wrap;
     gap: 1.25rem;
-    margin: 0.6rem 0;
+    margin-top: 0.5rem;
 }
 
 .radio-group label,
 .checkbox-group label {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.4rem;
     font-weight: 400;
-    color: var(--text-secondary);
+    color: var(--text-muted);
     cursor: pointer;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
+    accent-color: var(--accent);
     width: 1.15rem;
     height: 1.15rem;
-    accent-color: var(--accent);
     cursor: pointer;
 }
 
-/* Validációs állapotok és eredménydoboz */
+/* Hibakezelés */
 .error-msg {
-    color: #ef4444;
+    color: #dc2626;
     font-size: 0.85rem;
-    margin-top: 0.4rem;
-    min-height: 1.25em;
+    margin-top: 0.35rem;
+    min-height: 1.2em;
 }
 
 .input-error {
-    background-color: #fef2f2;
-    border-color: #ef4444 !important;
+    background-color: #fef2f2 !important;
+    border-color: #dc2626 !important;
 }
 
-#scoreBox {
-    margin-top: 2rem;
-    padding: 1.25rem;
-    background-color: #f0fdf4;
-    border-left: 4px solid #22c55e;
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    font-weight: 600;
-    color: #15803d;
-    display: none;
-}
-
-/* Interaktív gomb */
+/* Gomb */
 #gombos {
     margin-top: 2rem;
 }
 
 button {
     width: 100%;
-    padding: 0.85rem 1.75rem;
+    max-width: 280px;
+    padding: 0.85rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
     color: #ffffff;
@@ -271,42 +322,64 @@ button {
     border: none;
     border-radius: var(--radius-sm);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
-    transition: background-color var(--transition), transform var(--transition);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    transition: var(--transition);
 }
 
 button:hover {
     background-color: var(--accent-hover);
+    transform: translateY(-1px);
 }
 
 button:active {
-    transform: translateY(1px);
+    transform: translateY(0);
 }
 
-/* --- ASZTALI NÉZET (DESKTOP) --- */
-@media (min-width: 768px) {
-    h1 {
-        font-size: 2.25rem;
+/* Eredményjelző */
+#scoreBox {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background-color: #f0fdf4;
+    border-left: 4px solid #16a34a;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #15803d;
+    display: none;
+}
+
+/* ==========================================================================
+   8. LÁBLÉC
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: #64748b;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    background-color: #ffffff;
+}
+
+/* ==========================================================================
+   9. ASZTALI NÉZET (DESKTOP)
+   ========================================================================== */
+@media (min-width: 769px) {
+    header h1 {
+        font-size: 2.3rem;
     }
 
     nav ul {
         flex-direction: row;
         justify-content: center;
-        gap: 0.75rem;
+        gap: 0.6rem;
     }
 
     nav ul li {
         width: auto;
     }
 
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="number"],
-    input[type="date"],
-    select,
-    textarea {
-        max-width: 440px;
+    nav ul li a {
+        padding: 0.5rem 1rem;
     }
 
     button {

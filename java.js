@@ -16,19 +16,51 @@ function calc() {
 }
 
 //nepi-hez
-const images = document.querySelectorAll('#tanc img');
+(() => {
+    const images = document.querySelectorAll('#tanc img');
+    if (!images.length) return;
+
+    // Érintőképernyő és animációcsökkentés vizsgálata (Responsive & A11y best practice)
+    const isHoverCapable = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!isHoverCapable || prefersReducedMotion) {
+        return; // Mobilon és redukált mozgásnál meghagyja az optimális alapmegjelenést
+    }
 
     images.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.style.willChange = 'transform, box-shadow, filter';
+        img.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s ease, filter 0.45s ease';
 
-        img.addEventListener('mouseenter', () => {
-            img.style.transform = 'scale(1.5)'; 
+        img.addEventListener('mousemove', (e) => {
+            const rect = img.getBoundingClientRect();
+
+            // Kurzormozgás normalizálása (-0.5 és +0.5 között)
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+            // Arányos, kíméletes dőlési szögek és dinamikus fény
+            const rotX = (-y * 12).toFixed(2);
+            const rotY = (x * 12).toFixed(2);
+
+            img.style.transition = 'transform 0.08s ease-out, box-shadow 0.15s ease, filter 0.15s ease';
+            img.style.transform = `perspective(850px) rotateX(\({rotX}deg) rotateY(\){rotY}deg) scale3d(1.05, 1.05, 1.05) translateY(-6px)`;
+            img.style.boxShadow = `\({-x * 16}px\){-y * 16 + 14}px 28px rgba(56, 36, 27, 0.22)`;
+            img.style.filter = 'brightness(1.03) contrast(1.02)';
+            img.style.zIndex = '10';
         });
 
-        
         img.addEventListener('mouseleave', () => {
-            img.style.transform = 'scale(1)';  
+            // Rugalmas, finom visszatérés nyugalmi állapotba
+            img.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease, filter 0.5s ease';
+            img.style.transform = 'perspective(850px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1) translateY(0)';
+            img.style.boxShadow = '0 6px 16px rgba(56, 36, 27, 0.08)';
+            img.style.filter = 'brightness(1) contrast(1)';
+            img.style.zIndex = '1';
         });
     });
+})();
 
 //kerdoivhez
 document.getElementById("cultureForm").addEventListener("submit", function(e) {

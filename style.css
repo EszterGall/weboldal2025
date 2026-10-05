@@ -1,4 +1,24 @@
-/* --- ALAP BEÁLLÍTÁSOK ÉS SZÍNEK --- */
+/* --- VÁLTOZÓK ÉS ALAPBEÁLLÍTÁSOK --- */
+:root {
+    --bg-page: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-subtle: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --accent: #0284c7;
+    --accent-hover: #0369a1;
+    --accent-focus: rgba(2, 132, 199, 0.15);
+    --border: #e2e8f0;
+    --border-hover: #cbd5e1;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+    --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,37 +26,47 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #f8fafc;
-    color: #334155;
-    line-height: 1.6;
-    padding-bottom: 2rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    padding-bottom: 3rem;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- FEJLÉC ÉS CÍMEK --- */
+/* --- TIPOGRÁFIA ÉS FEJLÉC --- */
 h1 {
     text-align: center;
-    padding: 2rem 1rem;
-    color: #0f172a;
-    font-size: 1.8rem;
+    padding: 3rem 1.5rem 2rem;
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
 }
 
 h2 {
-    color: #1e293b;
-    margin: 1.5rem 0 1rem;
-    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin: 2rem 0 1rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
 p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     text-align: justify;
+    font-size: 1rem;
 }
 
-/* --- MENÜ (MOBILON ÉS ASZTALIN IS LETISZTULT) --- */
+/* --- NAVIGÁCIÓ (FLOATING PILL DESIGN) --- */
 nav {
-    background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 0.65rem 1rem;
 }
 
 nav ul {
@@ -44,83 +74,109 @@ nav ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
+}
+
+nav ul li {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
 }
 
 nav ul li a {
     display: block;
     text-decoration: none;
-    color: #475569;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
+    color: var(--text-secondary);
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-sm);
     font-weight: 500;
-    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    transition: all var(--transition);
 }
 
 nav ul li a:hover {
-    background-color: #0284c7;
-    color: #ffffff;
+    background-color: var(--bg-subtle);
+    color: var(--accent);
 }
 
-/* --- FŐ TARTALOM ÉS BLOKKOK --- */
+/* --- FŐ KONTÉNER --- */
 main {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
+    max-width: 860px;
+    width: 92%;
+    margin: 2.5rem auto;
+    padding: 2.5rem;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
 }
 
 article#szokasok {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 ol#lista {
     list-style-position: inside;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 }
 
 ol#lista li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
+    padding-left: 0.25rem;
 }
 
-/* --- TÁBLÁZAT KÁRTYAKÉNT --- */
+/* --- KÁRTYASZERŰ TÁBLÁZAT ÉS MÉDIA --- */
 table {
     width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-    background-color: #f1f5f9;
-    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem 0;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
     overflow: hidden;
 }
 
 td {
     display: block;
-    padding: 1rem;
-    text-align: center;
+    padding: 1.5rem;
+    text-align: left;
     font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+td:first-child {
+    border-bottom: 1px solid var(--border);
+    background-color: #fafbfd;
 }
 
 img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     display: block;
     margin: 0 auto;
+    border: 1px solid var(--border);
+    transition: transform var(--transition);
 }
 
-/* --- ŰRLAPOK (FORM) --- */
+img:hover {
+    transform: scale(1.005);
+}
+
+/* --- ŰRLAPOK (MODERN & TISZTA FORM ELEMEK) --- */
 .form-group {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     text-align: left;
 }
 
 label {
     display: block;
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-    color: #334155;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-primary);
 }
 
 input[type="text"],
@@ -131,92 +187,116 @@ input[type="date"],
 select,
 textarea {
     width: 100%;
-    padding: 0.7rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.975rem;
     font-family: inherit;
+    color: var(--text-primary);
+    background-color: var(--bg-surface);
     outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-    border-color: #0284c7;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-focus);
 }
 
-/* Rádiógombok és jelölőnégyzetek */
-.radio-group, 
+/* Checkbox és rádió mezők */
+.radio-group,
 .checkbox-group {
     display: flex;
-    gap: 1rem;
-    margin: 0.5rem 0;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin: 0.6rem 0;
 }
 
-.radio-group label, 
+.radio-group label,
 .checkbox-group label {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    font-weight: normal;
+    gap: 0.45rem;
+    font-weight: 400;
+    color: var(--text-secondary);
     cursor: pointer;
 }
 
-input[type="radio"], 
+input[type="radio"],
 input[type="checkbox"] {
-    width: auto;
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--accent);
     cursor: pointer;
 }
 
-/* Hibajelzések és értesítők */
+/* Validációs állapotok és eredménydoboz */
 .error-msg {
-    color: #dc2626;
+    color: #ef4444;
     font-size: 0.85rem;
-    margin-top: 0.3rem;
-    min-height: 1.2em;
+    margin-top: 0.4rem;
+    min-height: 1.25em;
 }
 
 .input-error {
     background-color: #fef2f2;
-    border-color: #dc2626;
+    border-color: #ef4444 !important;
 }
 
 #scoreBox {
-    margin-top: 1.5rem;
-    padding: 1rem;
+    margin-top: 2rem;
+    padding: 1.25rem;
     background-color: #f0fdf4;
-    border-left: 4px solid #16a34a;
-    font-weight: bold;
+    border-left: 4px solid #22c55e;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-weight: 600;
+    color: #15803d;
     display: none;
 }
 
-/* Gombok */
+/* Interaktív gomb */
 #gombos {
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 button {
     width: 100%;
-    padding: 0.8rem 1.5rem;
+    padding: 0.85rem 1.75rem;
     font-size: 1rem;
     font-weight: 600;
     color: #ffffff;
-    background-color: #0284c7;
+    background-color: var(--accent);
     border: none;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.25);
+    transition: background-color var(--transition), transform var(--transition);
 }
 
 button:hover {
-    background-color: #0369a1;
+    background-color: var(--accent-hover);
 }
 
-/* --- ASZTALI NÉZET (SZÁMÍTÓGÉP) --- */
+button:active {
+    transform: translateY(1px);
+}
+
+/* --- ASZTALI NÉZET (DESKTOP) --- */
 @media (min-width: 768px) {
+    h1 {
+        font-size: 2.25rem;
+    }
+
     nav ul {
         flex-direction: row;
         justify-content: center;
+        gap: 0.75rem;
+    }
+
+    nav ul li {
+        width: auto;
     }
 
     input[type="text"],
@@ -226,11 +306,11 @@ button:hover {
     input[type="date"],
     select,
     textarea {
-        max-width: 400px;
+        max-width: 440px;
     }
 
     button {
         width: auto;
-        min-width: 200px;
+        min-width: 180px;
     }
 }

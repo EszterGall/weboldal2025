@@ -297,7 +297,7 @@ textarea:focus {
 /* Radio & Checkbox */
 .radio-group,
 .checkbox-group {
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     gap: 1.25rem;
     margin-top: 0.5rem;
